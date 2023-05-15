@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/bitrise-io/go-utils/pathutil"
 	"os"
 	"path/filepath"
 )
@@ -12,7 +13,19 @@ func main() {
 		"./scripts/ci/bitrise/setup_bitrise_steps",
 	}
 
-	fmt.Println("Running path expansion with the GO runtime")
+	fmt.Println("Running path expansion with Bitrise stuff\n")
+
+	for _, path := range paths {
+		expandedPath, err := pathutil.AbsPath(path)
+		if err != nil {
+			fmt.Printf("%s encoundtered an error: %s\n", path, err)
+			continue
+		}
+
+		fmt.Printf("%s -> %s\n", path, expandedPath)
+	}
+
+	fmt.Println("\nRunning path expansion with the GO runtime")
 
 	for _, path := range paths {
 		expandedPath, err := filepath.Abs(os.ExpandEnv(path))
