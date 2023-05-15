@@ -13,7 +13,7 @@ func main() {
 		"./scripts/ci/bitrise/setup_bitrise_steps",
 	}
 
-	fmt.Println("Running path expansion with Bitrise stuff\n")
+	fmt.Printf("Running path expansion with Bitrise stuff\n")
 
 	for _, path := range paths {
 		expandedPath, err := pathutil.AbsPath(path)
@@ -25,7 +25,7 @@ func main() {
 		fmt.Printf("%s -> %s\n", path, expandedPath)
 	}
 
-	fmt.Println("\nRunning path expansion with the GO runtime")
+	fmt.Printf("\nRunning path expansion with the GO runtime")
 
 	for _, path := range paths {
 		expandedPath, err := filepath.Abs(os.ExpandEnv(path))
