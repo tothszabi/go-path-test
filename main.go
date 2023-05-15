@@ -25,7 +25,7 @@ func main() {
 		fmt.Printf("%s -> %s\n", path, expandedPath)
 	}
 
-	fmt.Printf("\nRunning path expansion with the GO runtime")
+	fmt.Printf("\nRunning path expansion with the GO runtime\n")
 
 	for _, path := range paths {
 		expandedPath, err := filepath.Abs(os.ExpandEnv(path))
